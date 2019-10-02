@@ -15,9 +15,30 @@ public class PlayerController : MonoBehaviour
     public float tilt;
     public Boundary boundary;
 
-    void Start () {
+    public GameObject shot;
+    public Transform shotSpawn;
+    public float fireDelta = 0.5F;
+
+    private float nextFire = 0.5F;
+    private float myTime = 0.0F;
+
+    void Start() {
         rb = GetComponent<Rigidbody>();
     }
+
+    void Update()
+    {
+        myTime = myTime + Time.deltaTime;
+
+        if (Input.GetButton("Fire1") && myTime > nextFire)
+        {
+            nextFire = myTime + fireDelta;
+            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            nextFire = nextFire - myTime;
+            myTime = 0.0F;
+        }
+    }
+
     void FixedUpdate() {
         float moveHorizontal = Input.GetAxis("Mouse X");
         float moveVertical = Input.GetAxis("Mouse Y");
