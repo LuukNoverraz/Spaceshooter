@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public Text scoreText;
     public Text restartText;
     public Text gameOverText;
+    public GameObject redLine;
     private bool gameOver;
     private bool restart;
     private int score;
@@ -47,6 +48,7 @@ public class GameController : MonoBehaviour
                 yield return new WaitForSeconds(spawnWait);
                 if (gameOver) {
                     restartText.text = "Press 'R' to Restart!";
+                    redLine.GetComponent<SpriteRenderer>().color = new Color(255.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f);
                     restart = true;
                     break;
                 }
@@ -60,7 +62,7 @@ public class GameController : MonoBehaviour
         UpdateScore();
     }
     void UpdateScore() {
-        scoreText.text = "Score: " + score;
+        scoreText.text = "" + score;
         if (score < 0)
         {
             scoreText.color = new Color(253.0f / 255.0f, 66.0f / 255.0f, 66.0f / 255.0f);
