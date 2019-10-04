@@ -11,7 +11,8 @@ public class Boundary
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
-    public float speed;
+    public float wasdSpeed;
+    public float mouseSpeed;
     public float tilt;
     public Boundary boundary;
 
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         myTime = myTime + Time.deltaTime;
 
-        if (Input.GetButton("Fire1") && myTime > nextFire)
+        if ((Input.GetButton("Fire1") && myTime > nextFire) || (Input.GetKey(KeyCode.Space) && myTime > nextFire))
         {
             nextFire = myTime + fireDelta;
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
@@ -42,10 +43,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate() {
         float moveHorizontal = Input.GetAxis("Mouse X");
+        float moveHorizontal2 = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Mouse Y");
+        float moveVertical2 = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        rb.velocity = movement * speed;
+        Vector3 movement2 = new Vector3(moveHorizontal2, 0.0f, moveVertical2);
+        rb.velocity = (movement + (movement2 * wasdSpeed)) * mouseSpeed;
 
         rb.position = new Vector3
         (
