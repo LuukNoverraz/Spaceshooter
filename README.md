@@ -9,3 +9,4 @@ These things include:
 * Two bolts can now collide, when they do a custom smaller explosion will go off
 * Slight audio tweaks
 * UI changes (include font and color)
+* WASD/Space controls have been added alongside mouse controls
