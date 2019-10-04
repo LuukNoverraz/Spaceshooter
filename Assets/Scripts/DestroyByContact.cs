@@ -8,6 +8,7 @@ public class DestroyByContact : MonoBehaviour
     public GameObject playerExplosion;
     public int scoreValue;
     private GameController gameController;
+    public GameObject firstPersonCamera;
 
     void Start() {
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
@@ -31,6 +32,7 @@ public class DestroyByContact : MonoBehaviour
         {
             Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
             gameController.GameOver();
+            Destroy(firstPersonCamera);
         }
         gameController.AddScore(scoreValue);
         Destroy(other.gameObject);

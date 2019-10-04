@@ -13,7 +13,6 @@ public class TitleClick : MonoBehaviour
     }
     void LoadGame()
     {
-        Debug.Log("ok");
         SceneManager.LoadScene("Main");
     }
 }
