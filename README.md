@@ -7,6 +7,7 @@ These things include:
 * Custom title screen
 * Receiving a penalty to your score when letting asteroids go off the screen
 * Two bolts can now collide, when they do a custom smaller explosion will go off
-* Slight audio tweaks
 * UI changes (include font and color)
 * WASD/Space controls have been added alongside mouse controls
+* There is a secret first person mode accesible by pressing F1. To return to third person, press F3
+* Slight audio tweaks
