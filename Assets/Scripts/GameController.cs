@@ -27,12 +27,21 @@ public class GameController : MonoBehaviour
         score = 0;
         UpdateScore();
         StartCoroutine(SpawnWaves());
+        GameObject.FindGameObjectWithTag("FirstPerson").GetComponent<Camera>().enabled = false;
     }
     void Update() {
         if (restart) {
             if (Input.GetKeyDown(KeyCode.R)) {
                 SceneManager.LoadScene("Main");
             }
+        }
+        if (Input.GetKeyDown(KeyCode.F1) && GameObject.FindGameObjectWithTag("FirstPerson").GetComponent<Camera>().enabled == false) {
+            Debug.Log("false");
+            GameObject.FindGameObjectWithTag("FirstPerson").GetComponent<Camera>().enabled = true;
+        }
+        if (Input.GetKeyDown(KeyCode.F3) && GameObject.FindGameObjectWithTag("FirstPerson").GetComponent<Camera>().enabled == true) {
+            Debug.Log("false");
+            GameObject.FindGameObjectWithTag("FirstPerson").GetComponent<Camera>().enabled = false;
         }
     }
     IEnumerator SpawnWaves() {

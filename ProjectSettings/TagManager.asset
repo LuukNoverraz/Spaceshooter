@@ -8,6 +8,7 @@ TagManager:
   - Asteroid
   - Enemy
   - Bolt
+  - FirstPerson
   layers:
   - Default
   - TransparentFX
